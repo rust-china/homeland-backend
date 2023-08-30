@@ -1,0 +1,16 @@
+{
+  "env": "test",
+
+  "server": {
+    "port": 3003
+  },
+
+  "database": {
+    "uri": "postgres://postgres:postgres@127.0.0.1:5432/homeland_test",
+    "name": "homeland_test"
+  },
+  
+  "logger": {
+    "level": "error"
+  }
+}

@@ -2,9 +2,12 @@
 members = [".", "entity"]
 
 [workspace.dependencies]
+config = "0.13.3"
 log = "0.4"
 dotenvy = "0.15"
 anyhow = "1.0"
+chrono = "0.4"
+
 # thiserror = "1.0"
 
 tokio = { version = "1.29", features = ["full"] }
@@ -17,16 +20,24 @@ entity = { path = "./entity" }
 name = "homeland-backend"
 version = "0.1.0"
 edition = "2021"
-
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+config = "0.13.3"
+serde = { version = "1.0.183", features = ["derive"] }
+serde_json = "1.0.105"
+serde_derive = "1.0.152"
+lazy_static = "1.4.0"
 log = { workspace = true }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+tracing-log = "0.1"
 dotenvy = { workspace = true }
 anyhow = { workspace = true }
 # thiserror = { workspace = true }
 
 tokio = { workspace = true }
+chrono = { workspace = true }
 
 arel = { workspace = true }
 entity = { workspace = true }
