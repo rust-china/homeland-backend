@@ -78,9 +78,9 @@ checksum = "a4668cab20f66d8d020e1fbc0ebe47217433c1b6c8f2040faf858554e394ace6"
 
 [[package]]
 name = "arel"
-version = "0.2.6"
+version = "0.2.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "84096d63e78fc361bff81e9853d73c9ed73f1f1af182b29420f12bf8d8029740"
+checksum = "ff86904d9bba2e9c59e77e9b7ada92cbdcb4c128fb156e4ae066f52f35b671e4"
 dependencies = [
  "anyhow",
  "arel-macros",
@@ -97,9 +97,9 @@ dependencies = [
 
 [[package]]
 name = "arel-macros"
-version = "0.0.6"
+version = "0.0.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "78d9feca5a2c609000318b1732e3a16d6837c3acd0c510581c6439a4e0a9c810"
+checksum = "0e6d7434d176b10cfeaa1e1bc902214122141f87f6edb97673e21f96c9743974"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -384,7 +384,6 @@ name = "entity"
 version = "0.1.0"
 dependencies = [
  "arel",
- "sqlx",
 ]
 
 [[package]]

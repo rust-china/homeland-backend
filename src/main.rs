@@ -1,19 +1,20 @@
 use arel::prelude::*;
-mod settings;
 mod logger;
+mod settings;
 
 use settings::SETTINGS;
-use log::{info};
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     dotenvy::from_filename(".env")?;
+    let _ = dotenvy::from_filename_override(".env.local");
+
     arel::visitor::init().await?;
     logger::setup()?;
-    info!("start server app: {}", SETTINGS.server.name);
+    log::info!("start server app: {}", SETTINGS.server.name);
     let port = SETTINGS.server.port;
-    info!("user port: {}", port);
+    log::info!("user port: {}", port);
     let count = entity::User::query().select_sql("count(*)").fetch_count().await?;
-    info!("user count: {}", count);
+    log::info!("user count: {}", count);
     Ok(())
 }
