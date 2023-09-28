@@ -1,0 +1,17 @@
+{
+  "env": "development",
+
+  "server": {
+    "port": 3000,
+    "name": "homeland-backend"
+  },
+
+  "database": {
+    "uri": "postgres://postgres:postgres@127.0.0.1:5432/homeland_development",
+    "name": "homeland_development"
+  },
+
+  "logger": {
+    "level": "debug"
+  }
+}
