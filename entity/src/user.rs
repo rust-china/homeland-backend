@@ -1,7 +1,7 @@
 use arel::prelude::*;
 
 #[arel_enum]
-enum State {
+pub enum State {
     #[arel_enum(value = 0, default = true)]
     Diabled,
     #[arel_enum(value = 1)]
@@ -10,12 +10,18 @@ enum State {
 
 #[arel(table_name = "users")]
 pub struct User {
-    id: i32,
-    username: String,
-    email: String,
-    state: State,
-    created_at: chrono::DateTime<chrono::FixedOffset>,
-    updated_at: chrono::DateTime<chrono::FixedOffset>,
-    login_at: Option<chrono::DateTime<chrono::FixedOffset>>,
+    pub id: i32,
+    pub username: String,
+    pub email: String,
+    pub state: State,
+    pub created_at: Option<chrono::DateTime<chrono::FixedOffset>>,
+    pub updated_at: Option<chrono::DateTime<chrono::FixedOffset>>,
+    pub login_at: Option<chrono::DateTime<chrono::FixedOffset>>,
 }
 impl Arel for User {}
+
+impl User {
+    pub fn is_valid(&self) -> bool {
+        self.state == State::Normal
+    }
+}
