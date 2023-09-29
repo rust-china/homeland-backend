@@ -18,7 +18,13 @@ pub struct User {
     pub updated_at: Option<chrono::DateTime<chrono::FixedOffset>>,
     pub login_at: Option<chrono::DateTime<chrono::FixedOffset>>,
 }
-impl Arel for User {}
+#[arel::async_trait::async_trait]
+impl Arel for User {
+    async fn before_save_with_tx(&mut self, _tx: &mut sqlx::Transaction<'_, arel::db::Database>) -> arel::Result<()> {
+        self.updated_at.set(chrono::Utc::now());
+        Ok(())
+    }
+}
 
 impl User {
     pub fn is_valid(&self) -> bool {

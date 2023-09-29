@@ -9,5 +9,3 @@ CREATE TABLE IF NOT EXISTS users
 		updated_at timestamptz DEFAULT CURRENT_TIMESTAMP NOT NULL,
 		login_at TIMESTAMP
 );
-
-CREATE INDEX "idx-users-username" ON "users" (username);

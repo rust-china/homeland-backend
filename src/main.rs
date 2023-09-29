@@ -6,6 +6,7 @@ mod settings;
 use app::{AppState, APP_STATE};
 use arel::prelude::*;
 use error::Error;
+use settings::SETTINGS;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
@@ -15,14 +16,10 @@ async fn main() -> anyhow::Result<()> {
     sqlx::migrate!().run(arel::db::visitor::get()?.pool()).await?;
     app::init_app_state().await?;
 
-    let count = entity::User::query().select_sql("count(*)").fetch_count().await?;
-    log::info!("user count: {}", count);
-    println!("Hello, world!");
+    // let port = settings::SETTINGS.get_string("database.name")?;
+    // log::info!("user port: {}", port);
 
-    let port = settings::SETTINGS.get_string("database.name")?;
-    log::info!("user port: {}", port);
-
-    let addr = format!("0.0.0.0:{}", std::env::var("SERVE_PORT")?).parse()?;
+    let addr = format!("0.0.0.0:{}", SETTINGS.get_int("server.port")?).parse()?;
     app::listen(addr).await
 }
 

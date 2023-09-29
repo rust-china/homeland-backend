@@ -83,14 +83,12 @@ pub(crate) async fn callback(State(_state): State<Arc<crate::AppState>>, query: 
             db_user.assign(&user);
             user = db_user;
         }
-        if user.is_dirty() {
-            user.save().await?;
-        }
+        user.save().await?;
 
         let max_age: i64 = std::env::var("JWT_MAX_AGE")?.parse::<i64>()?;
         let sub = crate::app::jwt::Sub {
-            user_id: user.id.value().unwrap().0.unwrap(),
-            username: user.username.value().unwrap().0.clone().unwrap(),
+            user_id: user.id.get_value()?.clone().try_into()?,
+            username: user.username.get_value()?.clone().try_into()?,
         };
         crate::app::schema::SimpleBroker::publish(crate::app::schema::health::OnlineUser {
             username: sub.username.clone(),

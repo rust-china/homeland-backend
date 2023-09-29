@@ -111,9 +111,7 @@ checksum = "a4668cab20f66d8d020e1fbc0ebe47217433c1b6c8f2040faf858554e394ace6"
 
 [[package]]
 name = "arel"
-version = "0.3.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "27b4009b5de00a251399c89d708b5d5007481209c44b4b5f703cee1542be2545"
+version = "0.3.8"
 dependencies = [
  "anyhow",
  "arel-macros",
@@ -131,9 +129,7 @@ dependencies = [
 
 [[package]]
 name = "arel-macros"
-version = "0.3.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3d7886dfbbee7f7beab9e7e2d5af6f1a3ebd834f826fab3f9b70b49b60d7e127"
+version = "0.3.8"
 dependencies = [
  "proc-macro2",
  "quote",
